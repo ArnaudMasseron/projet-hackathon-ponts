@@ -23,3 +23,8 @@ def pose_question():
 def reponse_question():
     reponse = ask_question_to_pdf("Ma réponse à ta question est : " + request.form["prompt"] + ". Dis-moi si la réponse est juste. Si ma réponse est fausse, explique de manière pédagogue quelle est la bonne réponse.",remember_question)
     return {"answer":reponse}
+
+@app.route("/qcm", methods=['GET'])
+def pose_qcm():
+    reponse = ask_qcm()
+    return {"answer":reponse}
