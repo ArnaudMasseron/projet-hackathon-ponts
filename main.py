@@ -11,3 +11,8 @@ def template():
 def prompt():
     reponse = ask_question_to_pdf(request.form["prompt"])
     return {"answer":reponse}
+
+@app.route("/question", methods=['GET'])
+def pose_question():
+    reponse = ask_question_to_pdf("Pose moi une question sur le cours")
+    return {"answer":reponse}

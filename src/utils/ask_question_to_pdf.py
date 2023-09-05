@@ -92,7 +92,6 @@ def gpt3_completion(question, contexte):
         {"role": "user", "content": question}
     ]
 )["choices"][0]["message"]["content"]
-text="Arnaud Masseron est un etudiant de sexe masculin"
 
 def ask_question_to_pdf(question):
-    return gpt3_completion(question, document)
+    return gpt3_completion(question, "Tu es un assistant de révision qui poses des questions sur le cours suivant : " + document)
