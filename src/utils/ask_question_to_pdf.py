@@ -94,4 +94,7 @@ def gpt3_completion(question, contexte):
 )["choices"][0]["message"]["content"]
 
 def ask_question_to_pdf(question):
-    return gpt3_completion(question, "Tu es un assistant de révision qui poses des questions sur le cours suivant : " + document)
+    return gpt3_completion(question, document)
+
+def ask_qcm():
+    return gpt3_completion("Génère un qcm avec 1 réponse juste et 3 réponses fausses à partir du contexte", document)

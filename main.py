@@ -16,3 +16,8 @@ def prompt():
 def pose_question():
     reponse = ask_question_to_pdf("Pose moi une question sur le cours")
     return {"answer":reponse}
+
+@app.route("/qcm", methods=['GET'])
+def pose_qcm():
+    reponse = ask_qcm()
+    return {"answer":reponse}
