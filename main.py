@@ -10,6 +10,4 @@ def template():
 @app.route("/prompt", methods=['POST'])
 def prompt():
     reponse = ask_question_to_pdf(request.form["prompt"])
-    if reponse==None:
-        return {"answer":"Rien"}
     return {"answer":reponse}
