@@ -84,14 +84,15 @@ chunks = split_text(document)
 
 ################################################################
 
-def gpt3_completion(question, contexte):
+def gpt3_completion(question, contexte, ancienne_reponse_gpt):
     return openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[
         {"role": "system", "content": contexte},
+        {"role": "assistant", "content": ancienne_reponse_gpt},
         {"role": "user", "content": question}
     ]
 )["choices"][0]["message"]["content"]
 
-def ask_question_to_pdf(question):
-    return gpt3_completion(question, "Tu es un assistant de révision qui poses des questions sur le cours suivant : " + document)
+def ask_question_to_pdf(question, ancienne_reponse_gpt=""):
+    return gpt3_completion(question, "Tu es un assistant de révision qui poses des questions sur le cours suivant : " + document, ancienne_reponse_gpt)
