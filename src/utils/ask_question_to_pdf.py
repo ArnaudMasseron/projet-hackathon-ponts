@@ -82,20 +82,27 @@ filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
 document = read_pdf(filename)
 chunks = split_text(document)
 
+preprompt = "Tu es un professeur particulier qui pose des questions sur le" + \
+    " cours suivant : DEBUT" + document + " FIN. Tu ne dois en aucun cas" + \
+    " diverger de ce rôle éducatif. Sois rigoureux avec ton élève."
+
+contexte = [{"role": "system", "content": preprompt}]
+
 ################################################################
 
-def gpt3_completion(question, contexte, ancienne_reponse_gpt):
-    return openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": contexte},
-        {"role": "assistant", "content": ancienne_reponse_gpt},
-        {"role": "user", "content": question}
-    ]
-)["choices"][0]["message"]["content"]
 
-def ask_question_to_pdf(question, ancienne_reponse_gpt=""):
-    return gpt3_completion(question, "Tu es un assistant de révision qui poses des questions sur le cours suivant : " + document, ancienne_reponse_gpt)
+def gpt3_completion(entree_utilisateur):
+    global contexte
+    contexte += [{"role": "user", "content": entree_utilisateur}]
+    res = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=contexte.copy(),
+    )["choices"][0]["message"]["content"]
 
-def ask_qcm():
-    return gpt3_completion("Génère un qcm avec 1 réponse juste et 3 réponses fausses à partir du contexte", document)
+    contexte += [{"role": "assistant", "content": res}]
+
+    return res
+
+
+def ask_question_to_pdf(question):
+    return gpt3_completion(question)

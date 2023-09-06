@@ -5,26 +5,27 @@ app = Flask(__name__)
 
 remember_question = ""
 
+
 @app.route("/")
 def template():
     return render_template('index.html')
 
+
 @app.route("/prompt", methods=['POST'])
 def prompt():
     reponse = ask_question_to_pdf(request.form["prompt"])
-    return {"answer":reponse}
+    return {"answer": reponse}
+
 
 @app.route("/question", methods=['GET'])
 def pose_question():
-    remember_question = ask_question_to_pdf("Pose moi une question sur le cours")
-    return {"answer":remember_question}
+    remember_question = ask_question_to_pdf("Pose moi une question sur un détail du cours")
+    return {"answer": remember_question}
+
 
 @app.route("/answer", methods=['POST'])
 def reponse_question():
-    reponse = ask_question_to_pdf("Ma réponse à ta question est : " + request.form["prompt"] + ". Dis-moi si la réponse est juste. Si ma réponse est fausse, explique de manière pédagogue quelle est la bonne réponse.",remember_question)
-    return {"answer":reponse}
-
-@app.route("/qcm", methods=['GET'])
-def pose_qcm():
-    reponse = ask_qcm()
-    return {"answer":reponse}
+    reponse = ask_question_to_pdf("Ma réponse est : " + request.form["prompt"] +
+                                  ". Dis si elle est juste et le cas échéant" +
+                                  " donne la réponse en pas plus de 3 phrases.")
+    return {"answer": reponse}
