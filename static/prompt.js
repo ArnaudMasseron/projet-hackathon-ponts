@@ -69,23 +69,26 @@ const handleQuestionClick = async () => {
         return result.answer;
     });
 
-    // Ici, je suppose que votre serveur renvoie à la fois les choix et la réponse correcte.
-    const response = await fetch("/question", { method: "GET" });
-    const data = await response.json();
+};
+
+questionButton.addEventListener("click", handleQuestionClick);
+
+///////////////// QCM
+
+const handleQCMClick = async () => {
+    const response = await fetch("/qcm", { method: "GET" });
+    const result = await response.json();
+    const data = result.answer;
     displayQCM(data);
 };
 
+
 const qcmTestButton = document.getElementById("qcm-test-button");
 
-qcmTestButton.addEventListener("click", function () {
-    displayQCM({
-        answer: "Quelle est la capitale de la France ?",
-        choices: ["Berlin", "Madrid", "Lisbonne", "Paris"],
-        correct: 3
-    });
-});
+qcmTestButton.addEventListener("click", handleQCMClick);
 
-function displayQCM(data) {
+function displayQCM(data) {     //data doit être un dictionnaire
+
     const { answer, choices, correct } = data;
 
     qcmQuestion.innerHTML = answer;
@@ -124,4 +127,3 @@ function displayQCM(data) {
     };
 }
 
-questionButton.addEventListener("click", handleQuestionClick);

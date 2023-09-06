@@ -4,6 +4,8 @@ import fitz
 import openai
 from dotenv import load_dotenv
 from nltk.tokenize import sent_tokenize
+import json
+
 
 load_dotenv()
 
@@ -106,7 +108,12 @@ def ask_question_to_pdf(question, ancienne_reponse_gpt=""):
 
 
 def ask_qcm():
-    return gpt3_completion(
-        "Génère un qcm avec 1 réponse juste et 3 réponses fausses à partir du contexte",
+    ReponseString = gpt3_completion(
+        'Génère un qcm avec 1 réponse juste et 3 réponses fausses à partir du contexte fourni. Je veux que tu renvoies le qcm sous la forme suivante : {answer: "Quelle est la capitale de la France ?",choices: ["Berlin", "Madrid", "Lisbonne", "Paris"],correct: 3} Tu renvoies juste la réponse sous cette forme, tu ne renvoies rien d autre.',
         document,
+        "",
     )
+    return json.loads(ReponseString)
+
+
+print(ask_qcm())
