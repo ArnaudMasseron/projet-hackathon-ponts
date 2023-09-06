@@ -162,3 +162,28 @@ body {
         transform: translate(calc(var(--loader-bullet-size) * 2), 0);
     }
 }
+
+#qcm-container {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#qcm-choices {
+    list-style-type: none;
+    padding: 0;
+}
+
+#qcm-choices li {
+    margin-top: 10px;
+}
+
+#qcm-choices input[type="radio"] {
+    margin-right: 10px;
+}
+
+#qcm-feedback {
+    margin-top: 15px;
+    font-weight: bold;
+}

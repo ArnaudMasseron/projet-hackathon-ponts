@@ -2,6 +2,11 @@ const promptForm = document.getElementById("prompt-form");
 const submitButton = document.getElementById("submit-button");
 const questionButton = document.getElementById("question-button");
 const messagesContainer = document.getElementById("messages-container");
+const qcmContainer = document.getElementById("qcm-container");
+const qcmQuestion = document.getElementById("qcm-question");
+const qcmChoices = document.getElementById("qcm-choices");
+const qcmSubmit = document.getElementById("qcm-submit");
+const qcmFeedback = document.getElementById("qcm-feedback");
 
 const appendHumanMessage = (message) => {
     const humanMessageElement = document.createElement("div");
@@ -11,24 +16,23 @@ const appendHumanMessage = (message) => {
 };
 
 const appendAIMessage = async (messagePromise) => {
-    // Add a loader to the interface
     const loaderElement = document.createElement("div");
     loaderElement.classList.add("message");
     loaderElement.innerHTML =
         "<div class='loader'><div></div><div></div><div></div>";
     messagesContainer.appendChild(loaderElement);
 
-    // Await the answer from the server
-    const messageToAppend = await messagePromise();
-
-    // Replace the loader with the answer
-    loaderElement.classList.remove("loader");
-    loaderElement.innerHTML = messageToAppend;
+    try {
+        const messageToAppend = await messagePromise();
+        loaderElement.innerHTML = messageToAppend;
+    } catch (error) {
+        loaderElement.innerHTML = "Une erreur est survenue.";
+        console.error(error);
+    }
 };
 
 const handlePrompt = async (event) => {
     event.preventDefault();
-    // Parse form data in a structured object
     const data = new FormData(event.target);
     promptForm.reset();
 
@@ -55,19 +59,69 @@ const handlePrompt = async (event) => {
 
 promptForm.addEventListener("submit", handlePrompt);
 
-const handleQuestionClick = async (event) => {
-    appendAIMessage(async () => {
-        const response = await fetch("/question", {
-            method: "GET",
-        });
+const handleQuestionClick = async () => {
+    await appendAIMessage(async () => {
+        const response = await fetch("/question", { method: "GET" });
         const result = await response.json();
-        const question = result.answer;
-
-        questionButton.dataset.question = question;
+        questionButton.dataset.question = result.answer;
         questionButton.classList.add("hidden");
         submitButton.innerHTML = "Répondre à la question";
-        return question;
+        return result.answer;
     });
+
+    // Ici, je suppose que votre serveur renvoie à la fois les choix et la réponse correcte.
+    const response = await fetch("/question", { method: "GET" });
+    const data = await response.json();
+    displayQCM(data);
 };
+
+const qcmTestButton = document.getElementById("qcm-test-button");
+
+qcmTestButton.addEventListener("click", function () {
+    displayQCM({
+        answer: "Quelle est la capitale de la France ?",
+        choices: ["Berlin", "Madrid", "Lisbonne", "Paris"],
+        correct: 3
+    });
+});
+
+function displayQCM(data) {
+    const { answer, choices, correct } = data;
+
+    qcmQuestion.innerHTML = answer;
+    qcmChoices.innerHTML = "";
+    qcmFeedback.innerHTML = ""; // Réinitialise le feedback
+
+    choices.forEach((choice, index) => {
+        const li = document.createElement("li");
+        const radioButton = document.createElement("input");
+        radioButton.type = "radio";
+        radioButton.name = "qcm-choice";
+        radioButton.value = index;
+        const label = document.createElement("label");
+        label.appendChild(radioButton);
+        label.appendChild(document.createTextNode(choice));
+        li.appendChild(label);
+        qcmChoices.appendChild(li);
+    });
+
+    qcmContainer.classList.remove("hidden");
+
+    qcmSubmit.onclick = function () {
+        const selected = document.querySelector("input[name='qcm-choice']:checked");
+        if (selected) {
+            if (parseInt(selected.value) === correct) {
+                qcmFeedback.innerHTML = "Bonne réponse !";
+                qcmFeedback.style.color = "green";
+            } else {
+                qcmFeedback.innerHTML = "Réponse incorrecte. Réessayez.";
+                qcmFeedback.style.color = "red";
+            }
+        } else {
+            qcmFeedback.innerHTML = "Veuillez sélectionner une réponse.";
+            qcmFeedback.style.color = "orange";
+        }
+    };
+}
 
 questionButton.addEventListener("click", handleQuestionClick);
