@@ -87,49 +87,6 @@ const qcmTestButton = document.getElementById("qcm-test-button");
 
 qcmTestButton.addEventListener("click", handleQCMClick);
 
-function displayQCM(data) {     //data doit être un dictionnaire
-
-    const { answer, choices, correct } = data;
-    const newQCMButton = document.getElementById("new-qcm-button");
-
-    // Créez une nouvelle div pour le QCM
-    const qcmDiv = document.createElement("div");
-    qcmDiv.classList.add("qcm-div");
-
-    // Ajoutez la question au nouveau div
-    const questionDiv = document.createElement("div");
-    questionDiv.innerHTML = answer;
-    qcmDiv.appendChild(questionDiv);
-
-    // Ajoutez les choix au nouveau div
-    const choicesList = document.createElement("ul");
-
-    choices.forEach((choice, index) => {
-        const li = document.createElement("li");
-        const radioButton = document.createElement("input");
-        radioButton.type = "radio";
-        radioButton.name = "qcm-choice";
-        radioButton.value = index;
-        const label = document.createElement("label");
-        label.appendChild(radioButton);
-        label.appendChild(document.createTextNode(choice));
-        li.appendChild(label);
-        choicesList.appendChild(li);
-    });
-
-    qcmDiv.appendChild(choicesList);
-
-    // Ajoutez le nouveau div au conteneur de messages
-    messagesContainer.appendChild(qcmDiv);
-
-    // Ajoutez les fonctions de validation et autres interactions ici, similaires à celles de votre fonction actuelle.
-    qcmSubmit.onclick = function () {
-        // ... (même code que précédemment)
-    };
-
-    newQCMButton.addEventListener("click", handleQCMClick);
-}
-
 
 
 function displayQCM(data) {     //data doit être un dictionnaire
