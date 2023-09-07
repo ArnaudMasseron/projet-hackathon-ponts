@@ -19,6 +19,14 @@ body {
     font-family: sans-serif;
 }
 
+.dark {
+    --body-background-color: #2a303b;
+    --main-background-color: #3a3f4b;
+    --main-color: #ffffff;
+    --border-color: #ffffff;
+    --secondary-color: #3a3f4b;
+}
+
 .main-container {
     max-width: var(--max-body-width);
     min-height: 100vh;
@@ -83,6 +91,7 @@ body {
     padding: 5px;
     border-radius: 5px;
     background-color: var(--main-background-color);
+    color: var(--main-color);
 }
 
 .button:hover,

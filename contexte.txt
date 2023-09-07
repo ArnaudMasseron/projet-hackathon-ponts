@@ -1,0 +1,22 @@
+§u:Pose moi une question sur un détail du cours
+§a:Quel est le rôle que l'École des Ponts et Chaussées a joué dans le développement de l'infrastructure en France ?
+§u:Ma réponse est : Pas grand chose. Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
+§a:Votre réponse n'est pas tout à fait correcte. L'École des Ponts et Chaussées a joué un rôle essentiel dans le développement de l'infrastructure en France. Les ingénieurs formés à l'école ont contribué de manière significative à la construction de routes, de ponts, de canaux, de ports et même du métro de Paris, contribuant ainsi à moderniser le pays et favoriser son développement économique et industriel.
+§u:Tu es sûr ?
+§a:Je m'excuse, ma réponse précédente était incorrecte. En réalité, l'École des Ponts et Chaussées a joué un rôle essentiel dans le développement de l'infrastructure en France. Les ingénieurs formés à l'école ont contribué de manière significative à la construction de routes, de ponts, de canaux, de ports et d'autres infrastructures vitales, ce qui a favorisé le développement économique et industriel du pays.
+§u:Pose moi une question sur un détail du cours
+§a:Quelles étaient les disciplines initiales enseignées à l'École des Ponts et Chaussées lors de sa création au XVIIIe siècle ?
+§u:kk
+§a:Oui, je suis sûr. L'École des Ponts et Chaussées a joué un rôle majeur dans le développement de l'infrastructure en France. Les ingénieurs formés à l'école ont été impliqués dans la construction de routes, de ponts, de canaux, de ports et d'autres projets d'infrastructure qui ont contribué à moderniser le pays.
+§u:Pose moi une question sur un détail du cours
+§a:Quelle était l'année de fondation de l'École des Ponts et Chaussées ?
+§u:Pose moi une question sur un détail du cours
+§a:Quelle est l'année de fondation de l'École des Ponts et Chaussées ?
+§u:Pose moi une question sur un détail du cours
+§a:Quel était l'objectif initial de la création de l'École des Ponts et Chaussées au XVIIIe siècle en France ?
+§u:Ma réponse est : Je ne sais pas. Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
+§a:Votre réponse est correcte, vous ne connaissez pas la réponse. L'objectif initial de la création de l'École des Ponts et Chaussées était de former des ingénieurs capables de concevoir et de superviser la construction de routes et de ponts pour améliorer l'infrastructure en France. Cette formation combinait des connaissances théoriques solides avec une expérience pratique sur le terrain.
+§u:Pose moi une question sur un détail du cours
+§a:Quel rôle a joué l'École des Ponts et Chaussées dans l'évolution de l'enseignement de l'ingénierie en France et dans le monde ?
+§u:Ma réponse est : . Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
+§a:Votre réponse n'est pas tout à fait correcte. L'École des Ponts et Chaussées a joué un rôle majeur dans l'évolution de l'enseignement de l'ingénierie en France et dans le monde. Elle a été pionnière dans la combinaison de connaissances théoriques solides avec une expérience pratique sur le terrain, une approche éducative novatrice pour l'époque. De plus, l'école a attiré des étudiants du monde entier qui ont contribué à diﬀuser les compétences et les connaissances acquises à l'ENPC à l'échelle mondiale.
