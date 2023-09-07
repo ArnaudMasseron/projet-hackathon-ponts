@@ -55,3 +55,21 @@ c) Un bouquet de roses rouges et de lys blancs
 d) Des fruits d'or autour de Baratier
 §u:Pose moi une question sur un détail du cours
 §a:Dans le poème de Victor Hugo, "Demain, dès l'aube...", quelle est la destination du locuteur ?
+§u:Pose moi une question sur un détail du cours
+§a:Quel est le nom du port de Normandie mentionné dans le texte A de Victor Hugo ?
+§u:Ma réponse est : Honfleur. Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
+§a:Non, ta réponse est incorrecte. Dans le texte A de Victor Hugo, il est fait référence à Harfleur, qui est un port en Normandie, pas à Honfleur.
+§u:Flute! Pose moi une nouvelle question
+§a:Bien sûr, voici une autre question sur le texte A de Victor Hugo : 
+
+Quelles sont les raisons qui poussent le locuteur à partir dès l'aube dans le poème de Victor Hugo ?
+§u:Parce que la campagne blanchit?
+§a:Non, la raison pour laquelle la mort concerne chaque locuteur dans les poèmes est différente. Nous allons les examiner en détail :
+
+Dans le texte A de Victor Hugo, le locuteur exprime son intention de partir dès le matin à la recherche de la tombe d'un être cher. La mort concerne le locuteur car il est séparé de cette personne et ressent le besoin de lui rendre hommage en déposant un bouquet de fleurs sur sa tombe.
+
+Dans le texte B de Guillaume Apollinaire, le locuteur imagine sa propre mort sur le front de l'armée. Il pense à la douleur que cela causerait à sa bien-aimée, Lou. La mort concerne le locuteur car il envisage la possibilité de mourir dans la guerre et se demande ce que deviendrait son souvenir.
+
+Dans le texte C de Pierre de Ronsard, le locuteur se trouve à l'extrême fin de sa vie. Il décrit son corps squelettique et affaibli par la mort. La mort concerne le locuteur car il est confronté à la réalité de sa propre mortalité et se sent abandonné par les médecins qui ne peuvent plus le soigner.
+
+En résumé, chaque locuteur dans les poèmes est concerné par la mort dans des contextes différents : la séparation d'un être cher, la préoccupation de laisser un souvenir derrière soi, et la confrontation avec la fin imminente de sa propre vie.
