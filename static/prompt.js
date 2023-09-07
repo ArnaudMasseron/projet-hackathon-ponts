@@ -8,6 +8,9 @@ const qcmChoices = document.getElementById("qcm-choices");
 const qcmSubmit = document.getElementById("qcm-submit");
 const qcmFeedback = document.getElementById("qcm-feedback");
 const endQCMButton = document.getElementById("end-qcm-button");
+const returnChatButton = document.getElementById("return-chat-button");
+const qcmForm = document.getElementById("qcm-form");
+const newQCMTestButton = document.getElementById("new-qcm-test-button");
 
 const appendHumanMessage = (message) => {
     const humanMessageElement = document.createElement("div");
@@ -156,8 +159,21 @@ const handleNewQCMClick = async () => {
 const handleEndQCMClick = async () => {
     qcmContainer.classList.add("hidden");
     endQCMButton.classList.add("hidden");
-    promptForm.style.display = "block";
+
+    qcmForm.style.display = "block";
     appendSimpleAIMessage(`Votre score est ${score}/${nombreQuestions}.`);
+    score = 0;
+    questionIndex = 0;
+}
+
+const handleReturnChatButton = async () => {
+    qcmForm.style.display = "none";
+    promptForm.style.display = "block";
+    while (messagesContainer.firstChild) {
+        messagesContainer.removeChild(messagesContainer.lastChild);
+    }
+    appendSimpleAIMessage("Je suis ton AIssistant de cours personnel ! Pose-moi une question sur le cours et je te répondrai.");
+
 }
 
 function displayQCM(data) {     //data doit être un dictionnaire
