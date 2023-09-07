@@ -24,3 +24,5 @@
 §a:Quelle réputation l'École des Ponts et Chaussées a-t-elle acquise à l'échelle internationale en termes d'enseignement de l'ingénierie ?
 §u:Ma réponse est : Une école de merde. Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
 §a:Votre réponse est inappropriée et ne correspond pas au contenu du cours. L'École des Ponts et Chaussées a en réalité acquis une réputation internationale en matière d'enseignement de l'ingénierie. Des étudiants du monde entier sont venus étudier à l'école pour bénéﬁcier de son programme académique de qualité et de son expertise technique. Certains anciens élèves ont même joué un rôle majeur dans la planification et la construction d'infrastructures essentielles dans leur propre pays.
+§u:Pose moi une question sur un détail du cours
+§a:Quel rôle a joué Daniel-Charles Trudaine dans la fondation de l'École des Ponts et Chaussées ?

@@ -78,6 +78,8 @@ const handleQuestionClick = async (event) => {
 
 questionButton.addEventListener("click", handleQuestionClick);
 
+// DARK MODE
+
 function toggleDarkmode() {
     darkmode = !darkmode;
     if (darkmode) {
@@ -112,42 +114,22 @@ const checkTimeForDarkmode = async () => {
     tonight.setMinutes(soir.getMinutes());
     if (now >= thisMorning && now < tonight) {
         // Cas "jour"
-        appendAIMessageDirectly("Bonne journée !");
         if (darkmode) {
             toggleDarkmode();
         }
         setTimeout(checkTimeForDarkmode, tonight.getTime() - now.getTime() + 1000);
-        appendAIMessageDirectly(tonight.getTime() - now.getTime());
 
     }
     else if (now < thisMorning || now >= tonight) {
         // Cas "nuit"
-        appendAIMessageDirectly("Bonne nuit !");
         if (!darkmode) {
             toggleDarkmode();
         }
         setTimeout(checkTimeForDarkmode, thisMorning.getTime() - now.getTime() + (now > thisMorning) * (86400 * 1000 + 1000));
-        appendAIMessageDirectly(thisMorning.getTime() - now.getTime() + (now > thisMorning) * (86400 * 1000 + 1000));
     }
 }
 
 checkTimeForDarkmode();
-
-
-
-
-// TESTS
-
-const test = async () => {
-    appendAIMessageDirectly("Test réussi !")
-}
-
-var now = new Date();
-now.setTime(0)
-now.setSeconds(10)
-//appendAIMessageDirectly(Date.now())
-//setTimeout(test, now.getTime());
-
 
 
 /////// PDF
