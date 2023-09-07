@@ -21,6 +21,26 @@
             </div>
         </section>
 
+        <section id="qcm-container" class="hidden">
+            <div id="qcm-question"></div>
+            <ul id="qcm-choices">
+                <!-- Les choix seront injectés ici par le JavaScript -->
+            </ul>
+            <button id="qcm-submit">Valider</button>
+            <div id="qcm-feedback"></div>
+            <button id="new-qcm-button" class="hidden">Question Suivante</button>
+            <button id="end-qcm-button" class="hidden">Résultats</button>
+
+        </section>
+
+        <form id="qcm-form" class="prompt-container">
+
+            <button type="button" class="button" id="return-chat-button">Retour au chat</button>
+
+            <button type="button" class="button" id="new-qcm-test-button">Nouveau QCM</button>
+
+        </form>
+
 
         <form id="prompt-form" class="prompt-container">
             <label for="prompt" class="prompt-label">Message</label>
@@ -42,6 +62,9 @@
             <button type="button" class="button" id="question-button">
                 Pose-moi une question !
             </button>
+
+            <button type="button" class="button" id="qcm-test-button">QCM</button>
+
 
             <button type="button" class="button" id="darkmode-button">
                 🌙

@@ -232,3 +232,102 @@ body {
     visibility: visible;
     opacity: 1;
 }
+
+#qcm-question {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#qcm-choices li {
+    margin-bottom: 10px;
+}
+
+#qcm-choices label {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#qcm-choices label:hover {
+    background-color: #f5f5f5;
+}
+
+#qcm-choices input[type="radio"] {
+    margin-right: 10px;
+}
+
+#qcm-submit,
+#new-qcm-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#qcm-submit:hover,
+#new-qcm-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Style général pour le feedback */
+#qcm-feedback {
+    margin-top: 20px;
+    font-size: 1.2em;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    /* Centrer le texte */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Style pour une bonne réponse */
+.correct-feedback {
+    background-color: #DFF2BF;
+    border-color: #4CAF50;
+    color: #2F922F;
+}
+
+/* Style pour une mauvaise réponse */
+.incorrect-feedback {
+    background-color: #FFD1D1;
+    border-color: #FF5B5B;
+    color: #D32F2F;
+}
+
+/* Style pour un prompt ou rappel */
+.prompt-feedback {
+    background-color: #FFE5AD;
+    border-color: #FFB84D;
+    color: #B87424;
+}
+
+
+
+#end-qcm-button {
+    margin: 30px auto;
+    text-align: center;
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    color: var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+#end-qcm-button:hover {
+    background-color: var(--body-background-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(50, 50, 93, 0.25), 0 3px 6px rgba(0, 0, 0, 0.16);
+}

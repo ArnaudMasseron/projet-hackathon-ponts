@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import os
-from src.utils.ask_question_to_pdf import ask_question_to_pdf
+from src.utils.ask_question_to_pdf import ask_question_to_pdf, ask_qcm
 from src.utils.ask_question_to_pdf import contexte
 
 app = Flask(__name__)
@@ -51,3 +51,8 @@ def upload_pdf():
         return jsonify({'success': 'File uploaded successfully'})
 
     return jsonify({'error': 'Invalid file format'}), 400
+
+@app.route("/qcm", methods=["GET"])
+def pose_qcm():
+    reponse = ask_qcm()
+    return {"answer": reponse}
