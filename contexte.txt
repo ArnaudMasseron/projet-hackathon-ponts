@@ -26,3 +26,32 @@
 §a:Votre réponse est inappropriée et ne correspond pas au contenu du cours. L'École des Ponts et Chaussées a en réalité acquis une réputation internationale en matière d'enseignement de l'ingénierie. Des étudiants du monde entier sont venus étudier à l'école pour bénéﬁcier de son programme académique de qualité et de son expertise technique. Certains anciens élèves ont même joué un rôle majeur dans la planification et la construction d'infrastructures essentielles dans leur propre pays.
 §u:Pose moi une question sur un détail du cours
 §a:Quel rôle a joué Daniel-Charles Trudaine dans la fondation de l'École des Ponts et Chaussées ?
+§u:Pose moi une question sur un détail du cours
+§a:Quand a été fondée l'École des Ponts et Chaussées ?
+§u:Ma réponse est : 1747. Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
+§a:Ta réponse est correcte, l'École des Ponts et Chaussées a été fondée en 1747. Bravo !
+§u:Pose moi une question sur un détail du cours
+§a:D'après l'article d'Alex Horne, quel aspect financier lié à Banksy contribue à sa liberté artistique selon l'auteur ?
+§u:Ma réponse est : Je ne sais pas. Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
+§a:Ta réponse est incomplète car tu n'as pas répondu à la question posée dans le sujet. Les situations d'énonciation des poèmes sont différentes car chaque locuteur exprime sa propre relation à la mort : dans le texte A, le locuteur parle de sa séparation d'avec un être aimé, dans le texte B, le locuteur envisage sa propre mort sur le front de l'armée, et dans le texte C, le locuteur parle de sa propre déchéance physique due à la mort.
+§u:Pose moi une question sur un détail du cours
+§a:Dans le texte A de Victor Hugo, que mettra le locuteur sur la tombe de la personne qu'il visite ?
+§u:Ma réponse est : Son penis?. Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
+§a:Je suis désolé, mais votre réponse ne correspond pas à la question posée. Les trois poèmes abordent le thème de la mort, mais chacun des locuteurs exprime une perspective différente. Victor Hugo parle de sa volonté de se rendre sur la tombe de quelqu'un qui lui est cher, tandis qu'Apollinaire évoque l'idée de mourir sur le front de l'armée et de laisser un souvenir éclaté dans l'espace. Quant à Ronsard, il se présente comme un squelette décharné et évoque sa propre mort.
+§u:Pose moi une question sur un détail du cours
+§a:Dans le premier vers du texte A de Victor Hugo, il est mentionné "dès l'aube". Comment cette indication temporelle contribue-t-elle à la signification du poème ?
+§u:Pose moi une question sur un détail du cours
+§a:Très bien, voici une question sur un détail du cours :
+
+Dans le texte A de Victor Hugo, quel élément montre que le locuteur se rend sur la tombe de quelqu'un ?
+§u:Pose moi une question sur un détail du cours
+§a:Bien sûr ! Voici une question sur un détail du cours :
+
+Dans le texte A de Victor Hugo, quel est l'objet que le locuteur promet de déposer sur la tombe de la personne qu'il évoque ?
+
+a) Un bouquet de houx vert et de bruyère en fleur
+b) Un obus éclatant
+c) Un bouquet de roses rouges et de lys blancs
+d) Des fruits d'or autour de Baratier
+§u:Pose moi une question sur un détail du cours
+§a:Dans le poème de Victor Hugo, "Demain, dès l'aube...", quelle est la destination du locuteur ?
