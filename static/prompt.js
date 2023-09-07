@@ -8,9 +8,6 @@ const qcmChoices = document.getElementById("qcm-choices");
 const qcmSubmit = document.getElementById("qcm-submit");
 const qcmFeedback = document.getElementById("qcm-feedback");
 const endQCMButton = document.getElementById("end-qcm-button");
-const returnChatButton = document.getElementById("return-chat-button");
-const qcmForm = document.getElementById("qcm-form");
-const newQCMTestButton = document.getElementById("new-qcm-test-button");
 
 qcmForm.style.display = "none";
 
