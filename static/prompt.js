@@ -12,6 +12,8 @@ const returnChatButton = document.getElementById("return-chat-button");
 const qcmForm = document.getElementById("qcm-form");
 const newQCMTestButton = document.getElementById("new-qcm-test-button");
 
+qcmForm.style.display = "none";
+
 const appendHumanMessage = (message) => {
     const humanMessageElement = document.createElement("div");
     humanMessageElement.classList.add("message", "message-human");
@@ -97,6 +99,7 @@ const handleQCMTestClick = async () => {
     }
     appendSimpleAIMessage("Mode Test");
     promptForm.style.display = "none";
+    qcmForm.style.display = "none";
     const response = await fetch("/qcm", { method: "GET" });
     const result = await response.json();
     questionList = result.answer;
@@ -122,6 +125,8 @@ const handleEndQCMClick = async () => {
     appendSimpleAIMessage(`Votre score est ${score}/${nombreQuestions}.`);
     score = 0;
     questionIndex = 0;
+    returnChatButton.addEventListener("click", handleReturnChatButton);
+    newQCMTestButton.addEventListener("click", handleQCMTestClick);
 }
 
 const handleReturnChatButton = async () => {
@@ -131,7 +136,6 @@ const handleReturnChatButton = async () => {
         messagesContainer.removeChild(messagesContainer.lastChild);
     }
     appendSimpleAIMessage("Je suis ton AIssistant de cours personnel ! Pose-moi une question sur le cours et je te répondrai.");
-
 }
 
 function displayQCM(data) {     //data doit être un dictionnaire
