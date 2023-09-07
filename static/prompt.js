@@ -7,6 +7,7 @@ const qcmQuestion = document.getElementById("qcm-question");
 const qcmChoices = document.getElementById("qcm-choices");
 const qcmSubmit = document.getElementById("qcm-submit");
 const qcmFeedback = document.getElementById("qcm-feedback");
+const endQCMButton = document.getElementById("end-qcm-button");
 
 const appendHumanMessage = (message) => {
     const humanMessageElement = document.createElement("div");
@@ -88,11 +89,15 @@ let questionList = [];
 let nombreQuestions = 2;
 
 const handleQCMTestClick = async () => {
-    await fetch("/", { method: "GET" });
+    while (messagesContainer.firstChild) {
+        messagesContainer.removeChild(messagesContainer.lastChild);
+    }
     appendSimpleAIMessage("Mode Test");
+    promptForm.style.display = "none";
     const response = await fetch("/qcm", { method: "GET" });
     const result = await response.json();
     questionList = result.answer;
+    qcmContainer.classList.remove("hidden");
     handleNewQCMClick();
 }
 
@@ -107,8 +112,10 @@ const handleNewQCMClick = async () => {
 };
 
 const handleEndQCMClick = async () => {
-    await fetch("/", { method: "GET" });
-    appendSimpleAIMessage("Votre score est ${score}.")
+    qcmContainer.classList.add("hidden");
+    endQCMButton.classList.add("hidden");
+    promptForm.style.display = "block";
+    appendSimpleAIMessage(`Votre score est ${score}/${nombreQuestions}.`);
 }
 
 function displayQCM(data) {     //data doit être un dictionnaire
@@ -153,7 +160,6 @@ function displayQCM(data) {     //data doit être un dictionnaire
                 newQCMButton.classList.remove("hidden");  // Affiche le bouton
             }
             else {
-                const endQCMButton = document.getElementById("end-qcm-button");
                 endQCMButton.classList.remove("hidden");    // Affiche le bouton
                 endQCMButton.addEventListener("click", handleEndQCMClick);
             }
@@ -161,6 +167,7 @@ function displayQCM(data) {     //data doit être un dictionnaire
             qcmFeedback.innerHTML = "Veuillez sélectionner une réponse.";
             qcmFeedback.style.color = "orange";
             newQCMButton.classList.add("hidden");  // Cache le bouton
+            qcmSubmit.classList.remove("hidden");
         }
     };
 
