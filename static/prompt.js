@@ -5,9 +5,9 @@ const darkmodeButton = document.getElementById("darkmode-button");
 const messagesContainer = document.getElementById("messages-container");
 
 var body = document.getElementsByTagName('body')[0];
-var darkmode=false;
-var matin = new Date(2023,0,0,15,3,0);
-var soir = new Date(2023,0,0,15,6,0);
+var darkmode = false;
+var matin = new Date(2023, 0, 0, 15, 3, 0);
+var soir = new Date(2023, 0, 0, 15, 6, 0);
 
 const appendHumanMessage = (message) => {
     const humanMessageElement = document.createElement("div");
@@ -78,7 +78,7 @@ const handleQuestionClick = async (event) => {
 
 questionButton.addEventListener("click", handleQuestionClick);
 
-function toggleDarkmode () {
+function toggleDarkmode() {
     darkmode = !darkmode;
     if (darkmode) {
         document.body.classList.add("dark");
@@ -113,21 +113,21 @@ const checkTimeForDarkmode = async () => {
     if (now >= thisMorning && now < tonight) {
         // Cas "jour"
         appendAIMessageDirectly("Bonne journée !");
-        if(darkmode){
-        toggleDarkmode();
-    }
-        setTimeout(checkTimeForDarkmode, tonight.getTime()-now.getTime()+1000);
-        appendAIMessageDirectly(tonight.getTime()-now.getTime());
-        
+        if (darkmode) {
+            toggleDarkmode();
+        }
+        setTimeout(checkTimeForDarkmode, tonight.getTime() - now.getTime() + 1000);
+        appendAIMessageDirectly(tonight.getTime() - now.getTime());
+
     }
     else if (now < thisMorning || now >= tonight) {
         // Cas "nuit"
         appendAIMessageDirectly("Bonne nuit !");
-        if(!darkmode){
+        if (!darkmode) {
             toggleDarkmode();
         }
-        setTimeout(checkTimeForDarkmode, thisMorning.getTime()-now.getTime()+(now>thisMorning)*(86400*1000+1000));
-        appendAIMessageDirectly(thisMorning.getTime()-now.getTime()+(now>thisMorning)*(86400*1000+1000));
+        setTimeout(checkTimeForDarkmode, thisMorning.getTime() - now.getTime() + (now > thisMorning) * (86400 * 1000 + 1000));
+        appendAIMessageDirectly(thisMorning.getTime() - now.getTime() + (now > thisMorning) * (86400 * 1000 + 1000));
     }
 }
 
@@ -148,3 +148,45 @@ now.setSeconds(10)
 //appendAIMessageDirectly(Date.now())
 //setTimeout(test, now.getTime());
 
+
+
+/////// PDF
+
+const fileUploadForm = document.getElementById('file-upload-form');
+const pdfInput = document.getElementById('pdf-input');
+
+pdfInput.addEventListener('change', async () => {
+    event.preventDefault();
+
+    // Vérifiez si un fichier a été sélectionné
+    const files = pdfInput.files;
+    if (files.length === 0) {
+        alert('Veuillez sélectionner un fichier PDF.');
+        return;
+    }
+
+    const file = files[0];
+    if (file.type !== 'application/pdf') {
+        alert('Le fichier doit être au format PDF.');
+        return;
+    }
+
+    // Créez un FormData pour envoyer le fichier en tant que requête POST
+    const formData = new FormData();
+    formData.append('pdf', file);
+
+    try {
+        const response = await fetch('/upload-pdf', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            alert('Fichier PDF téléversé avec succès!');
+        } else {
+            alert('Erreur lors du téléversement du fichier.');
+        }
+    } catch (error) {
+        console.error('Erreur lors du téléversement du fichier:', error);
+    }
+});
