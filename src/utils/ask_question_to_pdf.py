@@ -107,7 +107,6 @@ def ask_question_to_pdf(question, ancienne_reponse_gpt=""):
     )
 
 nombre_questions = 2
-
 def ask_qcm():
     ReponseString = "[" + gpt3_completion(
         'Génère un qcm de ' + str(nombre_questions) + ' questions avec 1 réponse juste et 3 réponses fausses à partir du contexte fourni. Je veux que tu renvoies le qcm sous la forme suivante : {"answer": "Quelle est la capitale de la France ?","choices": ["Berlin", "Madrid", "Lisbonne", "Paris"],"correct": 4} Tu renvoies juste la réponse sous cette forme, tu ne renvoies rien d autre. Tu sépares les résultats par des virgules',
