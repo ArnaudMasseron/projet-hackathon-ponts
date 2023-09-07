@@ -3,7 +3,6 @@
 
 <head>
     <title>Mon A.I.de mémoire</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
@@ -42,21 +41,10 @@
 
         </form>
 
-
         <form id="prompt-form" class="prompt-container">
             <label for="prompt" class="prompt-label">Message</label>
 
             <input type="text" id="prompt" name="prompt" class="prompt-input" autocomplete="off" />
-
-            <input type="file" id="pdf-input" accept=".pdf" style="display:none" />
-
-            <label for="pdf-input" class="button upload-button"
-                data-tooltip="Déposer un cours au format pdf que vous souhaitez apprendre !">
-                <i class="fas fa-upload"></i>
-                <span class="tooltip-text">Déposer un cours au format pdf que vous souhaitez apprendre !</span>
-            </label>
-
-
 
             <button type="submit" class="button" id="submit-button">Envoyer</button>
 

@@ -84,48 +84,6 @@ const handleQuestionClick = async () => {
 
 questionButton.addEventListener("click", handleQuestionClick);
 
-
-/////// PDF
-
-const fileUploadForm = document.getElementById('file-upload-form');
-const pdfInput = document.getElementById('pdf-input');
-
-pdfInput.addEventListener('change', async () => {
-    event.preventDefault();
-
-    // Vérifiez si un fichier a été sélectionné
-    const files = pdfInput.files;
-    if (files.length === 0) {
-        alert('Veuillez sélectionner un fichier PDF.');
-        return;
-    }
-
-    const file = files[0];
-    if (file.type !== 'application/pdf') {
-        alert('Le fichier doit être au format PDF.');
-        return;
-    }
-
-    // Créez un FormData pour envoyer le fichier en tant que requête POST
-    const formData = new FormData();
-    formData.append('pdf', file);
-
-    try {
-        const response = await fetch('/upload-pdf', {
-            method: 'POST',
-            body: formData
-        });
-
-        if (response.ok) {
-            alert('Fichier PDF téléversé avec succès!');
-        } else {
-            alert('Erreur lors du téléversement du fichier.');
-        }
-    } catch (error) {
-        console.error('Erreur lors du téléversement du fichier:', error);
-    }
-});
-
 ///////////////// QCM
 
 let score = 0;

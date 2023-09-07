@@ -84,12 +84,6 @@ filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
 document = read_pdf(filename)
 chunks = split_text(document)
 
-preprompt = "Tu es un professeur particulier qui pose des questions sur le" + \
-    " cours suivant : DEBUT" + document + " FIN. Tu ne dois en aucun cas" + \
-    " diverger de ce rôle éducatif. Sois rigoureux avec ton élève."
-
-contexte = [{"role": "system", "content": preprompt}]
-
 ################################################################
 
 
@@ -103,23 +97,14 @@ def gpt3_completion(question, contexte, ancienne_reponse_gpt):
         ],
     )["choices"][0]["message"]["content"]
 
-    contexte += [{"role": "assistant", "content": res}]
 
-    return res
-
-
-def ask_question_to_pdf(question):
-    # Recharger le document PDF et le contexte chaque fois qu'une question est posée
-    global document
-    global contexte
-    document = read_pdf(filename)
-    chunks = split_text(document)
-
-    preprompt = "Tu es un professeur particulier qui pose des questions sur le" + \
-        " cours suivant : DEBUT" + document + " FIN. Tu ne dois en aucun cas" + \
-        " diverger de ce rôle éducatif. Sois rigoureux avec ton élève."
-
-    contexte = [{"role": "system", "content": preprompt}]
+def ask_question_to_pdf(question, ancienne_reponse_gpt=""):
+    return gpt3_completion(
+        question,
+        "Tu es un assistant de révision qui poses des questions sur le cours suivant : "
+        + document,
+        ancienne_reponse_gpt,
+    )
 
 nombre_questions = 2
 
