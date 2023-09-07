@@ -106,14 +106,22 @@ def ask_question_to_pdf(question, ancienne_reponse_gpt=""):
         ancienne_reponse_gpt,
     )
 
-
+nombre_questions = 2
 def ask_qcm():
-    ReponseString = gpt3_completion(
-        'Génère un qcm avec 1 réponse juste et 3 réponses fausses à partir du contexte fourni. Je veux que tu renvoies le qcm sous la forme suivante : {answer: "Quelle est la capitale de la France ?",choices: ["Berlin", "Madrid", "Lisbonne", "Paris"],correct: 3} Tu renvoies juste la réponse sous cette forme, tu ne renvoies rien d autre.',
+    ReponseString = "[" + gpt3_completion(
+        'Génère un qcm de ' + str(nombre_questions) + ' questions avec 1 réponse juste et 3 réponses fausses à partir du contexte fourni. Je veux que tu renvoies le qcm sous la forme suivante : {"answer": "Quelle est la capitale de la France ?","choices": ["Berlin", "Madrid", "Lisbonne", "Paris"],"correct": 4} Tu renvoies juste la réponse sous cette forme, tu ne renvoies rien d autre. Tu sépares les résultats par des virgules',
         document,
         "",
-    )
-    return json.loads(ReponseString)
+    ) + "]"
+    reponse_json=json.loads(ReponseString)
+
+    for k in range(nombre_questions):
+        reponse_json[k]['correct'] -= 1
+
+    return reponse_json
 
 
-print(ask_qcm())
+# 1 'Génère un qcm de 2 questions avec 1 réponse juste et 3 réponses fausses à partir du contexte fourni. Je veux que tu renvoies le qcm sous la forme suivante : {"answer": "Quelle est la capitale de la France ?","choices": ["Berlin", "Madrid", "Lisbonne", "Paris"],"correct": 3} Tu renvoies juste la réponse sous cette forme, tu ne renvoies rien d autre. Tu sépares les résultats par des virgules'
+# 2 'Génère un QCM avec 2 questions liées au cours donné en contexte. Chaque question doit avoir le format suivant : {answer: "Question ici", choices: ["Option 1", "Option 2", "Option 3", "Option 4"], correct: Indice de la réponse correcte}. Les réponses correctes doivent être basées sur le contenu du cours. Renvoie simplement la liste des questions sous forme de code Python, rien de plus.'
+# 3 'Génère un qcm de 2 questions avec 1 réponse juste et 3 fausses en te basant uniquement sur le cours fourni. Une question doit être de la forme suivante : {answer: "Quelle est la capitale de la France?",choices: ["Berlin", "Madrid", "Lisbonne", "Paris"],correct: 3}. C est juste un exemple pour te montrer la forme, tu poses des questions seulement sur le cours que je t ai donné. Mets les réponses dans une liste python. Renvoie juste la liste.'
+# 'Génère un QCM avec 2 questions liées au cours donné en contexte. Chaque question doit avoir le format suivant : {"answer" : "Question ici", "choices" : ["Option 1", "Option 2", "Option 3", "Option 4"], "correct" : Indice de la réponse correcte}. Les réponses correctes doivent être basées sur le contenu du cours. Renvoie simplement la liste des questions sous forme de code Python, rien de plus.'

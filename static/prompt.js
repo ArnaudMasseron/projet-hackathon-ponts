@@ -15,6 +15,13 @@ const appendHumanMessage = (message) => {
     messagesContainer.appendChild(humanMessageElement);
 };
 
+const appendSimpleAIMessage = (message) => {
+    const humanMessageElement = document.createElement("div");
+    humanMessageElement.classList.add("message");
+    humanMessageElement.innerHTML = message;
+    messagesContainer.appendChild(humanMessageElement);
+};
+
 const appendAIMessage = async (messagePromise) => {
     const loaderElement = document.createElement("div");
     loaderElement.classList.add("message");
@@ -75,25 +82,42 @@ questionButton.addEventListener("click", handleQuestionClick);
 
 ///////////////// QCM
 
-const handleQCMClick = async () => {
+let score = 0;
+let questionIndex = 0;
+let questionList = [];
+let nombreQuestions = 2;
+
+const handleQCMTestClick = async () => {
+    await fetch("/", { method: "GET" });
+    appendSimpleAIMessage("Mode Test");
     const response = await fetch("/qcm", { method: "GET" });
     const result = await response.json();
-    const data = result.answer;
+    questionList = result.answer;
+    handleNewQCMClick();
+}
+
+const qcmTestButton = document.getElementById("qcm-test-button");
+qcmTestButton.addEventListener("click", handleQCMTestClick);
+
+
+const handleNewQCMClick = async () => {
+    data = questionList[questionIndex];
+    questionIndex += 1;
     displayQCM(data);
 };
 
-
-const qcmTestButton = document.getElementById("qcm-test-button");
-
-qcmTestButton.addEventListener("click", handleQCMClick);
-
-
+const handleEndQCMClick = async () => {
+    await fetch("/", { method: "GET" });
+    appendSimpleAIMessage("Votre score est ${score}.")
+}
 
 function displayQCM(data) {     //data doit être un dictionnaire
 
     const { answer, choices, correct } = data;
     const newQCMButton = document.getElementById("new-qcm-button");
+    newQCMButton.classList.add("hidden");
 
+    qcmSubmit.classList.remove("hidden");
     qcmQuestion.innerHTML = answer;
     qcmChoices.innerHTML = "";
     qcmFeedback.innerHTML = ""; // Réinitialise le feedback
@@ -114,16 +138,24 @@ function displayQCM(data) {     //data doit être un dictionnaire
     qcmContainer.classList.remove("hidden");
 
     qcmSubmit.onclick = function () {
+        qcmSubmit.classList.add("hidden");
         const selected = document.querySelector("input[name='qcm-choice']:checked");
         if (selected) {
             if (parseInt(selected.value) === correct) {
+                score += 1;
                 qcmFeedback.innerHTML = "Bonne réponse !";
                 qcmFeedback.style.color = "green";
-                newQCMButton.classList.remove("hidden");  // Affiche le bouton
             } else {
-                qcmFeedback.innerHTML = "Réponse incorrecte. Réessayez.";
+                qcmFeedback.innerHTML = "Réponse incorrecte.";
                 qcmFeedback.style.color = "red";
-                newQCMButton.classList.add("hidden");  // Cache le bouton
+            }
+            if (questionIndex !== nombreQuestions) {
+                newQCMButton.classList.remove("hidden");  // Affiche le bouton
+            }
+            else {
+                const endQCMButton = document.getElementById("end-qcm-button");
+                endQCMButton.classList.remove("hidden");    // Affiche le bouton
+                endQCMButton.addEventListener("click", handleEndQCMClick);
             }
         } else {
             qcmFeedback.innerHTML = "Veuillez sélectionner une réponse.";
@@ -132,8 +164,7 @@ function displayQCM(data) {     //data doit être un dictionnaire
         }
     };
 
-    newQCMButton.addEventListener("click", handleQCMClick);
-
+    newQCMButton.addEventListener("click", handleNewQCMClick);
 
 }
 
