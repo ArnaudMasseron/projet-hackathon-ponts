@@ -111,7 +111,7 @@ for l in lignes:
 ################################################################
 
 
-def gpt3_completion(entree_utilisateur):
+def gpt3_completion(entree_utilisateur, save=True):
     global contexte
     contexte += [{"role": "user", "content": entree_utilisateur}]
     res = openai.ChatCompletion.create(
@@ -127,7 +127,7 @@ def gpt3_completion(entree_utilisateur):
     return res
 
 
-def ask_question_to_pdf(question):
+def ask_question_to_pdf(question, save=True):
     # Recharger le document PDF et le contexte chaque fois qu'une question est posée
     global document
     global contexte
@@ -170,3 +170,5 @@ def ask_qcm():
         reponse_json[k]['correct'] -= 1
 
     return reponse_json
+
+

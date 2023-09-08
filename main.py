@@ -21,7 +21,7 @@ def prompt():
 
 @app.route("/question", methods=['GET'])
 def pose_question():
-    return {"answer": ask_question_to_pdf("Pose moi une question sur un détail du cours")}
+    return {"answer": ask_question_to_pdf("Pose moi une question sur un détail du cours", False)}
 
 
 @app.route("/answer", methods=['POST'])
@@ -56,3 +56,7 @@ def upload_pdf():
 def pose_qcm():
     reponse = ask_qcm()
     return {"answer": reponse}
+
+@app.route("/load-chat", methods=["GET"])
+def load_chat():
+    return {"answer": contexte}
