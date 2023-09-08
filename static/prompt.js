@@ -15,8 +15,8 @@ const newQCMTestButton = document.getElementById("new-qcm-test-button");
 
 var body = document.getElementsByTagName('body')[0];
 var darkmode = false;
-var matin = new Date(2023, 0, 0, 15, 3, 0);
-var soir = new Date(2023, 0, 0, 15, 6, 0);
+var matin = new Date(2023, 0, 0, 8, 0, 0);
+var soir = new Date(2023, 0, 0, 20, 30, 0);
 
 qcmForm.style.display = "none";
 
@@ -299,3 +299,23 @@ function displayQCM(data) {     //data doit être un dictionnaire
     newQCMButton.addEventListener("click", handleNewQCMClick);
 
 }
+
+const loadChat = async () => {
+    const response = await fetch("/load-chat", {
+        method: "GET"
+    });
+    const resultat = await response.json();
+    const result = await resultat.answer;
+    for (let i = 1; i < result.length; i++) {
+        type_message = result[i].role;
+        message = result[i].content;
+        if (type_message == "assistant") {
+            appendSimpleAIMessage(message);
+        }
+        else if (type_message == "user") {
+            appendHumanMessage(message);
+        }
+    }
+}
+
+loadChat();

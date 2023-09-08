@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 §u:Pose moi une question sur un détail du cours
 §a:Quel était l'objectif initial de l'École des Ponts et Chaussées lors de sa création ?
 §u:Ma réponse est : Former des ingénieurs. Dis si elle est juste et le cas échéant donne la réponse en pas plus de 3 phrases.
 §a:Votre réponse est partiellement correcte. L'objectif initial de l'École des Ponts et Chaussées était en effet de former des ingénieurs, mais plus spécifiquement des ingénieurs capables de concevoir et de superviser la construction de routes et de ponts pour améliorer l'infrastructure en France.
 §u:Pose moi une question sur un détail du cours
 §a:Quelle a été l'influence de l'École des Ponts et Chaussées sur le développement économique et industriel de la France ?
+=======
+
+>>>>>>> 80fe64eeaf2f9295c83838006e352c26e0b29939

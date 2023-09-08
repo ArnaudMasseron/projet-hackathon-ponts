@@ -112,7 +112,7 @@ for li in lignes:
 ################################################################
 
 
-def gpt3_completion(entree_utilisateur):
+def gpt3_completion(entree_utilisateur, save=True):
     global contexte
     contexte += [{"role": "user", "content": entree_utilisateur}]
     res = openai.ChatCompletion.create(
